@@ -41,7 +41,7 @@ Clonez le projet :
 
 bash
 Copy code
-git clone https://github.com/ton-username/bulk_email_api.git
+git clone https://github.com/Dilane05/bulk_email_api.git
 cd bulk_email_api
 Créez et activez un environnement virtuel :
 
