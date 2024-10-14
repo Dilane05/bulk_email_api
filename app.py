@@ -36,7 +36,7 @@ def send_bulk_emails(contacts, subject, body):
         # Fermeture de la connexion
         server.quit()
 
-        return True, "Emails sent successfully!"
+        return True, "Emails sent successfully !"
     except Exception as e:
         return False, str(e)
 
