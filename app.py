@@ -2,14 +2,19 @@ from flask import Flask, request, jsonify
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from dotenv import load_dotenv
+import os
+
+# Charger les variables d'environnement
+load_dotenv()
 
 app = Flask(__name__)
 
-# Configuration pour l'envoi d'emails
-SMTP_SERVER = 'smtp.hostinger.com'  # Remplace avec ton serveur SMTP
-SMTP_PORT = 465
-SMTP_USERNAME = 'newsletter@cil-labs.com'
-SMTP_PASSWORD = '>Zd6FLSL[r>'
+# Configuration pour l'envoi d'emails à partir des variables d'environnement
+SMTP_SERVER = os.getenv('SMTP_SERVER')
+SMTP_PORT = int(os.getenv('SMTP_PORT'))
+SMTP_USERNAME = os.getenv('SMTP_USERNAME')
+SMTP_PASSWORD = os.getenv('SMTP_PASSWORD')
 
 # Fonction pour envoyer des emails en masse
 def send_bulk_emails(contacts, subject, body):
@@ -36,7 +41,7 @@ def send_bulk_emails(contacts, subject, body):
         # Fermeture de la connexion
         server.quit()
 
-        return True, "Emails sent successfully !"
+        return True, "Emails sent successfully!"
     except Exception as e:
         return False, str(e)
 
